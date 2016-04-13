@@ -97,7 +97,10 @@ class Barcode(object):
         options = Barcode.default_writer_options.copy()
         options.update(writer_options or {})
         if options['write_text']:
-            options['text'] = self.get_fullcode()
+            if options['text'] != '':
+                options['text'] += ' - ' + self.get_fullcode()
+            else:
+                options['text'] = self.get_fullcode()
         self.writer.set_options(options)
         code = self.build()
         raw = Barcode.raw = self.writer.render(code)
