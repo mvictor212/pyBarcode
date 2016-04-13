@@ -164,7 +164,7 @@ class BaseWriter(object):
         """
         if self._callbacks['initialize'] is not None:
             self._callbacks['initialize'](code)
-        ypos = 1.0
+        ypos = 0.25
         for cc, line in enumerate(code):
             """
             Pack line to list give better gfx result, otherwise in can result in aliasing gaps
